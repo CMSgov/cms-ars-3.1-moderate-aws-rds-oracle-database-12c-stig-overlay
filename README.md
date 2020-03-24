@@ -89,7 +89,7 @@ git clone https://github.com/mitre/aws-rds-oracle-database-12c-stig-baseline.git
 cd cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay
 bundle install
 cd ..
-inspec exec cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay --input-file=<path_to_your_attributes_file/name_of_your_attributes_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+inspec exec cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay --input-file <path_to_your_attributes_file/name_of_your_attributes_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 
 For every successive run, follow these steps to always have the latest version of this overlay and dependent profiles:
@@ -101,36 +101,7 @@ cd ../cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay
 git pull
 bundle install
 cd ..
-inspec exec cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stigs-overlay --input-file=<path_to_your_attributes_file/name_of_your_attributes_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
-```
-### Different InSpec Exec commands depending on your target
-How to run on a remote target using ssh
-```bash
-# How to run 
-$ inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --input-file <path_to_your_input_file/name_of_your_input_file.yml>
-```
-
-If you need to run your profile with escalated privileges
-```bash
-# How to run 
-$ inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --input-file <path_to_your_input_file/name_of_your_input_file.yml> --sudo
-```
-
-How to run on a remote target using pem key
-```bash
-# How to run 
-$ inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay -t ssh://TARGET_USERNAME@TARGET_IP:TARGET_PORT -i PEM_KEY --input-file <path_to_your_input_file/name_of_your_input_file.yml>
-```
-
-How to run on docker container
-```bash
-Inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay -t docker://DOCKER_CONTAINER_ID --input-file <path_to_your_input_file/name_of_your_input_file.yml>
-```
-
-To run it locally on the target with InSpec installed (JBOSS and InSpec installed on same box)
-```bash
-# How to run 
-$ inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay --input-file <path_to_your_input_file/name_of_your_input_file.yml>
+inspec exec cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stigs-overlay --input-file <path_to_your_attributes_file/name_of_your_attributes_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 
 ## Viewing the JSON Results
