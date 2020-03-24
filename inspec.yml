@@ -1,10 +1,112 @@
 name: cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay
-title: InSpec Profile
-maintainer: The Authors
-copyright: The Authors
-copyright_email: you@example.com
+title: .
+maintainer: CMS InSpec Dev Team 
+copyright: .
+copyright_email: 
 license: Apache-2.0
-summary: An InSpec Compliance Profile
+summary: .
 version: 0.1.0
-supports:
-  platform: os
+
+depends:
+- name: aws-rds-oracle-database-12c-stig-baseline
+  path: ../aws-rds-oracle-database-12c-stig-baseline
+
+inputs:
+  - name: user
+    description: 'username Oracle DB (e.g., ''system'')'
+    value: ''
+
+  - name: password
+    description: 'password Oracle DB (e.g., ''xvIA7zonxGM=1'')'
+    value: ''
+
+  - name: host
+    description: 'hostname Oracle DB (e.g., ''localhost'')'
+    value: ''
+
+  - name: service
+    description: 'service name Oracle DB (e.g., ''ORCLCDB'')'
+    value: ''
+
+  - name: sqlplus_bin
+    description: 'Location of sqlplus tool (e.g., ''/opt/oracle/product/12.2.0.1/dbhome_1/bin/sqlplus'')'
+    value: ''
+
+  - name: standard_auditing_used
+    description: 'Set to true if standard auditing is used'
+    type: boolean
+    value: false 
+
+  - name: unified_auditing_used
+    description: 'Set to true if unified auditing is used'
+    type: boolean
+    value: false
+
+  - name: allowed_db_links
+    description: 'List of allowed database links'
+    type: array
+    value: []
+
+  - name: allowed_dbadmin_users
+    description: 'List of allowed database admins'
+    value: []
+
+  - name: users_allowed_access_to_public
+    description: 'List of users allowed access to PUBLIC'
+    type: array
+    value: []
+
+  - name: allowed_users_dba_role
+    description: 'List of users allowed the dba role'
+    type: array
+    value: []
+
+  - name: allowed_users_system_tablespace
+    description: 'List of users allowed the system tablespace'
+    type: array
+    value: []
+
+  - name: allowed_application_owners
+    description: 'List of application owners'
+    type: array
+    value: []
+
+  - name: allowed_unlocked_oracledb_accounts
+    description: 'List of allowed unlocked oracle db accounts'
+    type: array
+    value: []
+
+  - name: users_allowed_access_to_dictionary_table
+    description: 'List of users allowed access to the dictionary table'
+    type: array
+    value: []
+
+  - name: allowed_users_with_admin_privs
+    description: 'List of users allowed admin privileges'
+    type: array
+    value: []
+
+  - name: allowed_audit_users
+    description: 'List of users allowed audit access'
+    type: array
+    value: []
+
+  - name: allowed_dbaobject_owners
+    description: 'List of allowed dba object owners'
+    type: array
+    value: []
+
+  - name: allowed_oracledb_components
+    description: 'List of allowed Oracle db components'
+    type: array
+    value: []
+
+  - name: allowed_oracledb_components_integrated_into_dbms
+    description: 'List of oracle db components allowed to be intregrated into the dbms'
+    type: array
+    value: []
+
+  - name: oracle_dbas
+    description: 'List of allowed Oracle dba''s'
+    type: array
+    value: []
