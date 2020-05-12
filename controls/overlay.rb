@@ -20,8 +20,6 @@ include_controls 'oracle-database-12c-stig-baseline' do
 
     Online maintenance provides for a more timely capability and inclination to         
     investigate suspicious activity.'
-    tag "cci": ["CCI-000167"]
-    tag "nist": ["AU-11", "Rev_4"]
   end
 
   control 'V-61447' do
@@ -50,13 +48,6 @@ include_controls 'oracle-database-12c-stig-baseline' do
          able to make unauthorized modifications to the production data or database. 
          Every 90 days or more frequent periodic review of privilege assignments assures 
          that organizational and/or functional changes are reflected appropriately.'
-    tag "cci": ["CCI-001547"]
-    tag "nist": ["AC-2", "Rev_4"]
-  end
-
-  control 'V-61457' do
-    tag "cci": ["CCI-000148"]
-    tag "nist": ["AU-6", "Rev_4"]
   end
 
   control 'V-61491' do
@@ -1101,8 +1092,8 @@ include_controls 'oracle-database-12c-stig-baseline' do
   end
 
   control 'V-61765' do
-    tag "cci": ["CCI-001184"]
-    tag "nist": ["SC-23", "Rev_4"]
+    impact 'none'
+    desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not selected in CMS ARS 3.1'
   end
   
   control 'V-61777' do
