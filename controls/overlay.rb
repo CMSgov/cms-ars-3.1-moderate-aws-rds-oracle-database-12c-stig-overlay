@@ -1060,13 +1060,13 @@ include_controls 'oracle-database-12c-stig-baseline' do
   end
 
   control 'V-61749' do
-    impact 'none'
+    impact 0.0
     desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not 
     mandatory in CMS ARS 3.1'
   end
 
   control 'V-61755' do
-    impact 'none'
+    impact 0.0
     desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not                               
     mandatory in CMS ARS 3.1'
   end
@@ -1092,7 +1092,7 @@ include_controls 'oracle-database-12c-stig-baseline' do
   end
 
   control 'V-61765' do
-    impact 'none'
+    impact 0.0
     desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not selected in CMS ARS 3.1'
   end
   
