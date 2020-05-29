@@ -1,0 +1,13 @@
+---
+lockfile_version: 1
+depends:
+- name: aws-rds-oracle-database-12c-stig-baseline
+  resolved_source:
+    path: "/home/vagrant/git2/aws-rds-oracle-database-12c-stig-baseline"
+  version_constraints: []
+  dependencies:
+  - name: oracle-database-12c-stig-baseline
+    resolved_source:
+      git: https://github.com/mitre/oracle-database-12c-stig-baseline
+      ref: 5f231959906965dec625280006cb2e73d53f2c09
+    version_constraints: []
