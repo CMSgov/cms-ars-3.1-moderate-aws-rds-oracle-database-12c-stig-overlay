@@ -115,16 +115,19 @@ inputs:
     description: "Amount of allowed failed logon attempts"
     type: string
     value: 5
+    profile: oracle-database-12c-stig-baseline
 
   - name: password_life_time
     description: "Amount of time before password expires"
     type: string
     value: 60
-
+    profile: oracle-database-12c-stig-baseline
+    
   - name: account_inactivity_age
     description: "Amount of time before account is listed as inactive"
     type: string
     value: 60
+    profile: oracle-database-12c-stig-baseline
 
   - name: emergency_profile_list
     description: "Org-specific profiles used to manage emergency or temporary accounts"
