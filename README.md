@@ -76,6 +76,10 @@ allowed_oracledb_components_integrated_into_dbms: []
 
 # description: List of allowed Oracle dba's
 oracle_dbas: []
+
+# description: Org-specific profiles used to manage emergency or temporary accounts
+emergency_profile_list: []
+
 ```
 
 ## Running This Overlay
