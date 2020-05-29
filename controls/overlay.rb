@@ -333,7 +333,7 @@ include_controls 'oracle-database-12c-stig-baseline' do
     desc 'fix', '(This addresses both O121-C2-005000 and O121-C2-005200.)
          Configure the DBMS settings to specify the maximum number of consecutive failed logon 
          attempts to 5 (or less):
-         ALTER PROFILE ORA_STIG_PROFILE LIMIT FAILED_LOGIN_ATTEMPTS 53;'
+         ALTER PROFILE ORA_STIG_PROFILE LIMIT FAILED_LOGIN_ATTEMPTS 5;'
   end
 
   control 'V-61621' do
