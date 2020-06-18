@@ -105,7 +105,7 @@ cd ../cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay
 git pull
 bundle install
 cd ..
-inspec exec cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stigs-overlay --input-file <path_to_your_attributes_file/name_of_your_attributes_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+inspec exec cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay --input-file <path_to_your_attributes_file/name_of_your_attributes_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 
 ## Viewing the JSON Results
