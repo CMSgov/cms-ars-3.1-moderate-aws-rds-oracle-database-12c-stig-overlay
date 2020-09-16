@@ -1361,4 +1361,10 @@ include_controls 'oracle-database-12c-stig-baseline' do
     To assign the user to the profile do the following:
     ALTER USER <username> PROFILE ORA_STIG_PROFILE;'
   end
+  
+  control 'V-61967' do
+    impact 0.0
+    desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not applied to this system categorization in CMS ARS 3.1'
+  end
+
 end
