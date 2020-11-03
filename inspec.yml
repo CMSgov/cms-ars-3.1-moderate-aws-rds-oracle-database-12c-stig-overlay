@@ -1,135 +1,161 @@
 name: cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay
-title: .
+title: cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay
 maintainer: CMS InSpec Dev Team 
-copyright: .
+copyright: 
 copyright_email: 
 license: Apache-2.0
-summary: .
-version: 0.1.0
+summary: "CMS ARS 3.1 Moderate Overlay InSpec Validation Profile for AWS RDS Oracle 12c STIG"
+version: 0.1.1
+inspec_version: ">= 4.0"
 
 depends:
 - name: aws-rds-oracle-database-12c-stig-baseline
-  path: ../aws-rds-oracle-database-12c-stig-baseline
-
+  url: https://github.com/mitre/aws-rds-oracle-database-12c-stig-baseline.git/archive/master.tar.gz
+  
 inputs:
   - name: user
     description: 'username Oracle DB (e.g., ''system'')'
     value: ''
+    sensitive: true
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: password
     description: 'password Oracle DB (e.g., ''xvIA7zonxGM=1'')'
     value: ''
+    sensitive: true
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: host
     description: 'hostname Oracle DB (e.g., ''localhost'')'
     value: ''
+    sensitive: true
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: service
     description: 'service name Oracle DB (e.g., ''ORCLCDB'')'
     value: ''
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: sqlplus_bin
     description: 'Location of sqlplus tool (e.g., ''/opt/oracle/product/12.2.0.1/dbhome_1/bin/sqlplus'')'
     value: ''
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: standard_auditing_used
     description: 'Set to true if standard auditing is used'
     type: Boolean
-    value: false 
+    value: false
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: unified_auditing_used
     description: 'Set to true if unified auditing is used'
     type: Boolean
     value: false
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: allowed_db_links
     description: 'List of allowed database links'
     type: Array
     value: []
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: allowed_dbadmin_users
     description: 'List of allowed database admins'
     value: []
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: users_allowed_access_to_public
     description: 'List of users allowed access to PUBLIC'
     type: Array
     value: []
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: allowed_users_dba_role
     description: 'List of users allowed the dba role'
     type: Array
     value: []
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: allowed_users_system_tablespace
     description: 'List of users allowed the system tablespace'
     type: Array
     value: []
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: allowed_application_owners
     description: 'List of application owners'
     type: Array
     value: []
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: allowed_unlocked_oracledb_accounts
     description: 'List of allowed unlocked oracle db accounts'
     type: Array
     value: []
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: users_allowed_access_to_dictionary_table
     description: 'List of users allowed access to the dictionary table'
     type: Array
     value: []
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: allowed_users_with_admin_privs
     description: 'List of users allowed admin privileges'
     type: Array
     value: []
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: allowed_audit_users
     description: 'List of users allowed audit access'
     type: Array
     value: []
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: allowed_dbaobject_owners
     description: 'List of allowed dba object owners'
     type: Array
     value: []
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: allowed_oracledb_components
     description: 'List of allowed Oracle db components'
     type: Array
     value: []
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: allowed_oracledb_components_integrated_into_dbms
     description: 'List of oracle db components allowed to be intregrated into the dbms'
     type: Array
     value: []
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: oracle_dbas
     description: 'List of allowed Oracle dba''s'
     type: Array
     value: []
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: failed_logon_attempts
     description: "Amount of allowed failed logon attempts"
     type: Numeric
     value: 5
-    profile: oracle-database-12c-stig-baseline
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: password_life_time
     description: "Amount of time before password expires"
     type: Numeric
     value: 60
-    profile: oracle-database-12c-stig-baseline
+    profile: aws-rds-oracle-database-12c-stig-baseline
     
   - name: account_inactivity_age
     description: "Amount of time before account is listed as inactive"
     type: Numeric
     value: 60
-    profile: oracle-database-12c-stig-baseline
+    profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: emergency_profile_list
     description: "Org-specific profiles used to manage emergency or temporary accounts"
     type: Array
     value: []
+    profile: aws-rds-oracle-database-12c-stig-baseline
