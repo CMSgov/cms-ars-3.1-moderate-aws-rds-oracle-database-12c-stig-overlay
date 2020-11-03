@@ -10,7 +10,7 @@ inspec_version: ">= 4.0"
 
 depends:
 - name: aws-rds-oracle-database-12c-stig-baseline
-  url: https://github.com/mitre/aws-rds-oracle-database-12c-stig-baseline.git/archive/master.tar.gz
+  url: https://github.com/mitre/aws-rds-oracle-database-12c-stig-baseline/archive/master.tar.gz
   
 inputs:
   - name: user
