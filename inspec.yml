@@ -34,11 +34,13 @@ inputs:
   - name: service
     description: 'service name Oracle DB (e.g., ''ORCLCDB'')'
     value: ''
+    sensitive: true
     profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: sqlplus_bin
     description: 'Location of sqlplus tool (e.g., ''/opt/oracle/product/12.2.0.1/dbhome_1/bin/sqlplus'')'
     value: ''
+    sensitive: true
     profile: aws-rds-oracle-database-12c-stig-baseline
 
   - name: standard_auditing_used
