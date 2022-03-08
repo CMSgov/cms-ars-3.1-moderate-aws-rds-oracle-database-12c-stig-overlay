@@ -3,11 +3,79 @@ InSpec profile overlay to validate the secure configuration of AWS RDS Oracle Da
 
 ## Getting Started
 
-It is intended and recommended that InSpec run this profile from a __"runner"__ host (such as a DevOps orchestration server, an administrative management system, or a developer's workstation/laptop) against the target remotely over __ssh__.
+### InSpec (CINC-auditor) setup
+For maximum flexibility/accessibility, we’re moving to “cinc-auditor”, the open-source packaged binary version of Chef InSpec, compiled by the CINC (CINC Is Not Chef) project in coordination with Chef using Chef’s always-open-source InSpec source code. For more information: https://cinc.sh/
 
-__For the best security of the runner, always install on the runner the _latest version_ of InSpec and supporting Ruby language components.__ 
+It is intended and recommended that CINC-auditor and this profile overlay be run from a __"runner"__ host (such as a DevOps orchestration server, an administrative management system, or a developer's workstation/laptop) against the target. This can be any Unix/Linux/MacOS or Windows runner host, with access to the Internet.
 
-The latest versions and installation options are available at the [InSpec](http://inspec.io/) site.
+__For the best security of the runner, always install on the runner the _latest version_ of CINC-auditor.__ 
+
+__The simplest way to install CINC-auditor is to use this command for a UNIX/Linux/MacOS runner platform:__
+```
+curl -L https://omnitruck.cinc.sh/install.sh | sudo bash -s -- -P cinc-auditor
+```
+
+__or this command for Windows runner platform (Powershell):__
+```
+. { iwr -useb https://omnitruck.cinc.sh/install.ps1 } | iex; install -project cinc-auditor
+```
+To confirm successful install of cinc-auditor:
+```
+cinc-auditor -v
+```
+> sample output:  _4.24.32_
+
+Latest versions and other installation options are available at https://cinc.sh/start/auditor/.
+
+### Oracle 12c client setup
+
+To run the Oracle 12c profile against an AWS RDS Instance, InSpec expects the Oracle 12c sqlplus client to be readily available on the same runner system it is installed on.
+ 
+For example, to install the Oracle 12c sqlplus client on a Linux runner host:
+
+Download the two 12.2 packages from the OTN website:
+https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html
+```
+oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm
+oracle-instantclient12.2-sqlplus-12.2.0.1.0-1.x86_64.rpm
+```
+Install using:
+```
+sudo yum install libaio
+sudo rpm -ivh oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm
+sudo rpm -ivh oracle-instantclient12.2-sqlplus-12.2.0.1.0-1.x86_64.rpm
+```
+you will have sqlplus64 installed in:
+```
+cd /usr/bin
+ls -l sql*
+
+lrwxrwxrwx. 1 root root 41 Jan 25 16:59 sqlplus64 -> /usr/lib/oracle/12.2/client64/bin/sqlplus
+```
+Edit your .bashrc file, to add these as shown below:
+```
+###Sqlplus Client###
+
+export ORACLE_HOME=/usr/lib/oracle/12.2/client64
+
+export LD_LIBRARY_PATH=${ORACLE_HOME}/lib
+
+export PATH=${ORACLE_HOME}/bin:$PATH
+
+Save and source the .bashrc:
+
+source .bashrc
+```
+Validate sqlplus is installed successfully using:
+```
+$ which sqlplus
+
+/usr/lib/oracle/12.2/client64/bin/sqlplus
+
+$ sqlplus –version
+
+SQL*Plus: Release 12.2.0.1.0 Production
+```
 
 ## Tailoring to Your Environment
 The following inputs must be configured in an inputs ".yml" file for the profile to run correctly for your specific environment. More information about InSpec inputs can be found in the [InSpec Profile Documentation](https://www.inspec.io/docs/reference/profiles/).
@@ -85,7 +153,7 @@ emergency_profile_list: []
 
 ```
 # How to run
-inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay/archive/master.tar.gz --input-file=<path_to_your_inputs_file/name_of_your_inputs_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
+cinc-auditor exec https://github.com/CMSgov/cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay/archive/master.tar.gz --input-file=<path_to_your_inputs_file/name_of_your_inputs_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
 ```
 
 ### Different Run Options
@@ -104,8 +172,8 @@ When the __"runner"__ host uses this profile overlay for the first time, follow 
 mkdir profiles
 cd profiles
 git clone https://github.com/CMSgov/cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay.git
-inspec archive cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay
-inspec exec <name of generated archive> --input-file <path_to_your_attributes_file/name_of_your_attributes_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+cinc-auditor archive cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay
+cinc-auditor exec <name of generated archive> --input-file <path_to_your_attributes_file/name_of_your_attributes_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 
 For every successive run, follow these steps to always have the latest version of this overlay and dependent profiles:
@@ -114,8 +182,8 @@ For every successive run, follow these steps to always have the latest version o
 cd cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay
 git pull
 cd ..
-inspec archive cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay --overwrite
-inspec exec <name of generated archive> --input-file <path_to_your_attributes_file/name_of_your_attributes_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
+cinc-auditor archive cms-ars-3.1-moderate-aws-rds-oracle-database-12c-stig-overlay --overwrite
+cinc-auditor exec <name of generated archive> --input-file <path_to_your_attributes_file/name_of_your_attributes_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> 
 ```
 
 ## Using Heimdall for Viewing the JSON Results
